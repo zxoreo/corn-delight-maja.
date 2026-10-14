@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Corn Delight Maja</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 20px;
+        }
+
+        /* WARM CORN-THEMED BACKGROUND */
+        body {
+            background-color: #fffdf6;
+            /* Keep the background photo visible behind the whole page. */
+            background-image:
+                linear-gradient(rgba(255, 253, 246, 0.18), rgba(255, 253, 246, 0.18)),
+                url("background.png");
+            background-position: center top;
+            background-size: cover;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 80px;
+            background-color: #1a1a1a;
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #ffcc00;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar nav {
+            display: flex;
+            gap: 25px;
+        }
+
+        .navbar nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .navbar nav a:hover {
+            color: #ffcc00;
+        }
+
+        /* HOME SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            max-width: 1400px;
+            min-height: 650px;
+            margin: 0 auto;
+            padding: 45px 80px;
+            scroll-margin-top: 20px;
+            position: relative;
+            isolation: isolate;
+        }
+
+        /* Soft cream overlay over the poster in the Home section */
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background: rgba(255, 253, 246, 0.25);
+            border-radius: 0 0 28px 28px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .tagline {
+            margin-bottom: 12px;
+            color: #b76519;
+            font-size: 18px;
+            font-style: italic;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .hero-text h1 {
+            margin-bottom: 20px;
+            color: #2c3e50;
+            font-size: 54px;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .description {
+            margin-bottom: 35px;
+            color: #555;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 14px 35px;
+            border-radius: 30px;
+            background-color: #ffcc00;
+            color: #1a1a1a;
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #e6b800;
+            transform: translateY(-3px);
+        }
+
+        /* PRODUCT PHOTO WITH YELLOW GLOW */
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .hero-image::before {
+            content: "";
+            position: absolute;
+            width: 390px;
+            height: 390px;
+            max-width: 100%;
+            border-radius: 50%;
+            background: radial-gradient(
+                circle,
+                rgba(255, 204, 0, 0.40),
+                rgba(255, 204, 0, 0.08) 65%,
+                transparent 72%
+            );
+            z-index: -1;
+        }
+
+        .image-placeholder {
+            width: 350px;
+            height: 350px;
+            max-width: 100%;
+            overflow: hidden;
+            border: 5px solid rgba(255, 255, 255, 0.85);
+            border-radius: 50%;
+            background: transparent;
+            padding: 0;
+            box-shadow: 0 12px 35px rgba(90, 65, 0, 0.20);
+        }
+
+        .image-placeholder img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* CONTENT SECTIONS */
+        .info-section {
+            padding: 60px 80px;
+            scroll-margin-top: 20px;
+            background-color: rgba(255, 253, 246, 0.62);
+            position: relative;
+        }
+
+        .info-section h2 {
+            margin-bottom: 12px;
+            color: #2c3e50;
+            font-size: 30px;
+        }
+
+        .info-section > p {
+            max-width: 680px;
+            font-size: 17px;
+        }
+
+        /* PRODUCT SECTION */
+        #product {
+            padding: 45px 80px 50px;
+            background-color: rgba(255, 248, 220, 0.72);
+        }
+
+        #product h2 {
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+
+        #product > p {
+            max-width: 600px;
+            font-size: 15px;
+        }
+
+        .product-options {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            margin-top: 20px;
+        }
+
+        .product-card {
+            padding: 18px;
+            border: 1px solid rgba(211, 158, 0, 0.20);
+            border-radius: 18px;
+            background-color: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 8px 25px rgba(90, 65, 0, 0.10);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(90, 65, 0, 0.16);
+        }
+
+        .product-card img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            margin-bottom: 15px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            margin-bottom: 8px;
+            color: #b88600;
+            font-size: 20px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+        }
+
+        /* INGREDIENTS LIST - MATCHES BOTH PRODUCT CARDS */
+        .ingredients {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 12px;
+            background: #fff9df;
+            border: 1px solid rgba(211, 158, 0, 0.22);
+        }
+
+        .ingredients h4 {
+            margin-bottom: 8px;
+            color: #8a6500;
+            font-size: 16px;
+        }
+
+        .ingredients ul {
+            padding-left: 20px;
+            color: #555;
+            font-size: 14px;
+        }
+
+        .ingredients li {
+            margin-bottom: 4px;
+        }
+
+        .price {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 5px 13px;
+            border-radius: 20px;
+            background-color: #fff1a8;
+            color: #8a4d0f;
+            font-size: 18px !important;
+            font-weight: bold;
+        }
+
+        /* ABOUT SECTION */
+        #about {
+            background-color: rgba(255, 253, 246, 0.82);
+            border-top: 1px solid rgba(211, 158, 0, 0.12);
+            border-bottom: 1px solid rgba(211, 158, 0, 0.12);
+        }
+
+
+
+
+        /* MANAGEMENT STRUCTURE — Corn Delight Maja */
+        #structure {
+            background: radial-gradient(ellipse at top left, rgba(255, 224, 145, 0.22), transparent 42%), rgba(255, 251, 239, 0.95);
+        }
+        #structure h2 { color: #76501b; }
+        #structure > p { color: #766653; }
+        .management-chart { max-width: 1180px; margin: 30px auto 0; text-align: center; }
+        .management-leader {
+            position: relative; width: min(250px, 100%); margin: 0 auto; padding: 20px 18px;
+            border: 2px solid #f7df9c; border-radius: 18px;
+            background: linear-gradient(145deg, #dca83e, #b77b25); color: #fffdf7;
+            box-shadow: 0 10px 25px rgba(151, 100, 28, 0.18);
+        }
+        .management-leader::after { content: ""; position: absolute; left: 50%; top: 100%; height: 30px; border-left: 3px solid #b88600; }
+        .management-leader img, .management-member img {
+            display: block; width: 88px; height: 88px; margin: 0 auto 9px; object-fit: cover;
+            border: 4px solid #fffaf0; border-radius: 50%; background: #f8ebcf;
+        }
+        .management-role { display: inline-block; margin-bottom: 8px; padding: 3px 10px; border-radius: 20px; background: rgba(255,255,255,.22); font-size: 11px; font-weight: 800; letter-spacing: .8px; text-transform: uppercase; }
+        .management-leader h3 { font-size: 19px; }
+        .management-leader p { font-size: 13px; }
+        .management-connector { width: 100%; max-width: 1180px; height: 0; margin: 30px auto 30px; border-top: 3px solid #b88600; position: relative; box-sizing: border-box; }
+        .management-connector::before { display: none; }
+        .management-departments { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 18px; align-items: start; position: relative; }
+        .management-department { position: relative; border: 1px solid #ead8b5; border-radius: 15px; background: rgba(255,255,255,.97); box-shadow: 0 8px 22px rgba(112,75,26,.09); }
+        .management-department::before { content: ""; display: block; position: absolute; left: 50%; top: -30px; height: 30px; border-left: 3px solid #b88600; }
+        /* Horizontal connector between Finance and Sales teams, like the reference chart */
+        .management-department:nth-child(4)::after {
+            content: ""; position: absolute; top: -30px; left: 50%;
+            width: calc(100% + 18px); border-top: 3px solid #b88600;
+        }
+        .management-department:nth-child(5)::after {
+            content: ""; position: absolute; top: -30px; right: 50%;
+            width: calc(100% + 18px); border-top: 3px solid #b88600;
+        }
+        .management-department h3 { padding: 12px 8px; border-radius: 14px 14px 0 0; background: linear-gradient(135deg, #f8e7b7, #f1d58a); color: #68491f; font-size: 14px; }
+        .management-member { margin: 12px; padding: 14px 9px; border: 1px solid rgba(226,196,139,.6); border-radius: 12px; background: #fffaf0; color: #654c31; }
+        .management-member img { width: 72px; height: 72px; }
+        .management-member h4 { color: #68491f; font-size: 15px; }
+        .management-member p { color: #766653; font-size: 12px; }
+        .structure-note { margin-top: 22px; color: #8a7760; font-size: 13px; text-align: center; }
+        @media (max-width: 900px) { .management-departments { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 14px; } .management-connector { width: 100%; } }
+        @media (max-width: 560px) { .management-departments { grid-template-columns: 1fr; gap: 32px; } .management-connector { width: 100%; height: 0; border: 0; border-top: 3px solid #b88600; } .management-connector::before, .management-department::before { content: ""; display: block; position: absolute; left: 50%; top: -30px; height: 30px; border-left: 3px solid #b88600; } }
+
+        /* TEAM PHOTO AND VIDEO SECTION */
+        #team {
+            background-color: rgba(255, 253, 246, 0.88);
+            border-top: 1px solid rgba(211, 158, 0, 0.15);
+        }
+
+        .team-content {
+            max-width: 1000px;
+            margin: 25px auto 0;
+        }
+
+        .team-photo {
+            display: block;
+            width: 100%;
+            max-height: 560px;
+            object-fit: cover;
+            object-position: center;
+            border: 5px solid rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 12px 30px rgba(90, 65, 0, 0.16);
+        }
+
+        .team-caption {
+            margin: 14px 0 30px;
+            color: #555;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .video-heading {
+            margin: 28px 0 12px;
+            color: #2c3e50;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .team-video {
+            display: block;
+            width: 100%;
+            max-height: 560px;
+            margin: 0 auto;
+            border: 4px solid rgba(255, 255, 255, 0.95);
+            border-radius: 18px;
+            background: #1a1a1a;
+            box-shadow: 0 12px 30px rgba(90, 65, 0, 0.16);
+        }
+
+        /* CONTACT */
+        #contact {
+            background-color: rgba(255, 248, 220, 0.76);
+        }
+
+        #contact a {
+            color: #8a6500;
+            font-weight: bold;
+        }
+
+        #contact a:hover {
+            color: #e67e22;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 25px 20px;
+            background-color: #1a1a1a;
+            color: white;
+            text-align: center;
+        }
+
+        footer span {
+            color: #ffcc00;
+        }
+
+        /* MOBILE RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            body {
+                background-attachment: scroll;
+                background-position: center top;
+                background-size: cover;
+            }
+
+            .navbar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .navbar nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px;
+            }
+
+            .hero {
+                flex-direction: column;
+                justify-content: center;
+                gap: 25px;
+                min-height: auto;
+                padding: 60px 20px;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 38px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .image-placeholder {
+                width: 280px;
+                height: 280px;
+            }
+
+            .hero-image::before {
+                width: 310px;
+                height: 310px;
+            }
+
+            .info-section {
+                padding: 40px 20px;
+            }
+
+            #product {
+                padding: 40px 20px 30px;
+            }
+
+            .product-options {
+                grid-template-columns: 1fr;
+            }
+
+            .product-card img {
+                height: 220px;
+            }
+
+            .structure-teams {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .structure-team h3 {
+                font-size: 14px;
+            }
+
+            .member-card {
+                padding: 12px 8px;
+            }
+
+            .structure-leader {
+                margin-bottom: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .structure-teams {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+        /* LARGE DOCUMENTATION CARDS, MATCHING THE PRODUCT LAYOUT */
+        .documentation-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 26px;
+            margin: 30px auto 0;
+            max-width: 1200px;
+        }
+        .documentation-card {
+            padding: 24px;
+            border: 1px solid rgba(211, 158, 0, 0.25);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.97);
+            box-shadow: 0 10px 28px rgba(90, 65, 0, 0.11);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+        .documentation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 32px rgba(90, 65, 0, 0.16);
+        }
+        .documentation-card img {
+            display: block;
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin: 0 auto 16px;
+        }
+        /* Put Product Preparation on its own full-width row, like the gallery */
+        .documentation-gallery > .documentation-card {
+            grid-column: 1 / -1;
+        }
+        .preparation-card {
+            text-align: center;
+            padding: 28px;
+            background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,249,223,.98));
+        }
+        .preparation-card > img {
+            width: min(850px, 100%);
+            height: 430px;
+            object-fit: contain;
+            padding: 10px;
+            background: #fffdf6;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(90,65,0,.12);
+        }
+        .documentation-card h3 {
+            color: #8a6500;
+            margin-bottom: 9px;
+            font-size: 22px;
+        }
+        .documentation-card p { font-size: 16px; }
+        .customer-gallery-card {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 28px;
+            background: linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,249,223,.98));
+        }
+        .customer-carousel {
+            position: relative;
+            width: min(850px, 100%);
+            margin: 22px auto 0;
+            padding: 0 56px;
+        }
+        .customer-carousel-viewport {
+            overflow: hidden;
+            border-radius: 18px;
+            background: #fff8df;
+            box-shadow: 0 8px 24px rgba(90,65,0,.12);
+        }
+        .customer-carousel-track {
+            display: flex;
+            transition: transform .55s cubic-bezier(.22,.75,.25,1);
+            will-change: transform;
+        }
+        .customer-slide {
+            flex: 0 0 100%;
+            min-width: 0;
+            padding: 10px;
+        }
+        .customer-slide img {
+            display: block;
+            width: 100%;
+            height: 430px;
+            object-fit: contain;
+            border-radius: 12px;
+            background: #fffdf6;
+        }
+        .customer-slide p {
+            padding: 12px 8px 5px;
+            color: #76521d;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .carousel-arrow {
+            position: absolute;
+            top: 45%;
+            z-index: 1;
+            width: 42px;
+            height: 42px;
+            border: 0;
+            border-radius: 50%;
+            background: #ffcc00;
+            color: #302300;
+            font-size: 25px;
+            line-height: 1;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(90,65,0,.18);
+            transition: transform .2s ease, background .2s ease;
+        }
+        .carousel-arrow:hover { background: #f0b900; transform: scale(1.08); }
+        .carousel-arrow.prev { left: 3px; }
+        .carousel-arrow.next { right: 3px; }
+        .carousel-dots { display: flex; justify-content: center; gap: 9px; margin-top: 16px; }
+        .carousel-dot {
+            width: 11px; height: 11px; padding: 0; border: 0; border-radius: 50%;
+            background: #dfd0a5; cursor: pointer; transition: transform .2s, background .2s;
+        }
+        .carousel-dot.active { background: #b88600; transform: scale(1.25); }
+        .customer-gallery-note { margin-top: 12px; color: #766653; font-size: 13px !important; }
+
+        /* PRODUCT PRESENTATION AS A SLIDING PHOTO GALLERY */
+        .product-carousel { max-width: 1080px; margin-top: 28px; }
+        .product-slide {
+            flex: 0 0 100%; min-width: 0; box-sizing: border-box; padding: 18px;
+            display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+            gap: 24px; align-items: center; background: linear-gradient(145deg, #fffdf6, #fff7d9);
+        }
+        .product-slide > img {
+            display: block; width: 100%; height: 430px; object-fit: contain;
+            background: #fff; border-radius: 15px; box-shadow: 0 6px 20px rgba(90,65,0,.10);
+        }
+        .product-slide-info { text-align: left; padding: 10px 8px; }
+        .product-slide-info h3 { color: #9a7100; font-size: 25px; margin-bottom: 12px; }
+        .product-slide-info > p { font-size: 15px; }
+        .product-slide-info .ingredients { margin-top: 14px; }
+        .product-slide-info .ingredients ul { columns: 2; column-gap: 22px; }
+        .product-slide-info .price { margin-top: 15px; font-size: 21px; font-weight: 700; color: #8a6500; }
+        @media (max-width: 768px) {
+            .product-slide { grid-template-columns: 1fr; gap: 12px; padding: 12px; }
+            .product-slide > img { height: 300px; }
+            .product-slide-info { padding: 8px; }
+            .product-slide-info h3 { font-size: 21px; }
+        }
+
+        .permit-note {
+            margin-top: 20px;
+            padding: 18px;
+            border-left: 4px solid #d6a300;
+            border-radius: 10px;
+            background: rgba(255, 249, 223, 0.95);
+        }
+        #order { text-align: center; background: rgba(255, 248, 220, 0.9); }
+        #order > p { margin: 0 auto 22px; }
+        #order .cta-button { margin-top: 10px; }
+        @media (max-width: 768px) {
+            .documentation-gallery { grid-template-columns: 1fr; }
+            .documentation-card { padding: 18px; }
+            .documentation-card img { height: 250px; }
+            .customer-gallery-card { grid-column: 1 / -1; padding: 18px; }
+            .preparation-card { padding: 18px; }
+            .preparation-card > img { height: 300px; }
+            .customer-carousel { padding: 0 36px; }
+            .customer-slide img { height: 300px; }
+            .carousel-arrow { width: 34px; height: 34px; font-size: 21px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .customer-carousel-track, .documentation-card, .carousel-arrow { transition: none !important; }
+        }
+
+
+        /* Product cards: original and innovative products side by side */
+        .product-options-large {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 26px;
+            max-width: 1200px;
+            margin: 28px auto 0;
+        }
+        .product-card-large {
+            min-width: 0;
+            padding: 22px;
+            text-align: left;
+        }
+        .product-card-large > img {
+            width: 100%;
+            height: 330px;
+            object-fit: contain;
+            background: #fffdf6;
+            border-radius: 14px;
+        }
+        .product-card-info h3 {
+            margin: 8px 0 10px;
+            color: #9a7100;
+            font-size: 23px;
+        }
+        .product-card-info > p { font-size: 15px; }
+        .product-card-info .price { margin-top: 14px; }
+        .documentation-gallery {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: stretch;
+        }
+        .documentation-gallery > .documentation-card {
+            grid-column: auto;
+        }
+        .documentation-card {
+            min-width: 0;
+            padding: 22px;
+        }
+        .preparation-card .customer-carousel {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 42px;
+            margin-top: 18px;
+        }
+        /* Match the photo frame height of the Customer & Business Gallery beside it. */
+        .preparation-card .customer-slide img {
+            height: 430px;
+            object-fit: contain;
+            background: #fffdf6;
+        }
+        .customer-gallery-card .customer-carousel {
+            width: 100%;
+            max-width: 100%;
+        }
+        @media (max-width: 768px) {
+            .product-options-large,
+            .documentation-gallery {
+                grid-template-columns: 1fr;
+            }
+            .product-card-large > img { height: 260px; }
+            .documentation-gallery > .customer-gallery-card { grid-column: auto; }
+            .preparation-card .customer-carousel { padding: 0 34px; }
+            .preparation-card .customer-slide img,
+            .customer-gallery-card .customer-slide img { height: 260px; }
+        }
+
+
+        /* POLISHED TOP NAVIGATION */
+        .navbar {
+            position: sticky;
+            top: 0;
+            padding: 14px clamp(18px, 4vw, 58px);
+            gap: 22px;
+            flex-wrap: wrap;
+            background: rgba(26, 26, 26, 0.97);
+            backdrop-filter: blur(12px);
+        }
+        .logo {
+            white-space: nowrap;
+            font-size: clamp(19px, 2vw, 24px);
+            letter-spacing: .2px;
+        }
+        .navbar nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex: 1;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+        .navbar nav a {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 7px 12px;
+            border: 1px solid transparent;
+            border-radius: 20px;
+            color: #fffaf0;
+            font-size: 13px;
+            line-height: 1.25;
+            white-space: nowrap;
+            transition: background .2s ease, color .2s ease, border-color .2s ease;
+        }
+        .navbar nav a:hover,
+        .navbar nav a:focus-visible {
+            color: #241b00;
+            background: #ffcc00;
+            border-color: #ffdf62;
+            outline: none;
+        }
+        @media (max-width: 900px) {
+            .navbar { justify-content: center; }
+            .navbar nav { justify-content: center; }
+        }
+        @media (max-width: 600px) {
+            .navbar { position: relative; padding: 16px 12px; }
+            .navbar nav { gap: 6px; }
+            .navbar nav a { padding: 7px 10px; font-size: 12px; }
+        }
+
+</style>
+</head>
+<body>
+<!-- NAVIGATION BAR -->
+<header class="navbar">
+<div class="logo">🌽 Corn Delight Maja</div>
+<nav><a href="#home">Home</a><a href="#product">Product</a><a href="#documentation">Documentation</a><a href="#behind-scenes">Behind the Scenes</a><a href="#team">Our Team</a><a href="#structure">Management Team</a><a href="#financial">Financial Docs</a><a href="#permits">Permits</a><a href="#about">About Us</a><a href="#contact">Contact</a><a href="#order">Order Now</a></nav>
+</header>
+<!-- HOME SECTION -->
+
+<!-- PRODUCT SECTION -->
+
+<!-- ABOUT SECTION -->
+
+<!-- BUSINESS ORGANIZATION STRUCTURE -->
+
+<!-- TEAM PHOTO AND VIDEO SECTION -->
+
+<!-- CONTACT SECTION -->
+
+<!-- FOOTER -->
+<section class="hero" id="home">
+<div class="hero-text">
+<p class="tagline">Isang Kagat, Sarap Agad!</p>
+<h1>CORN DELIGHT MAJA</h1>
+<p class="description">
+                A creamy, sweet, and delicious Filipino corn dessert
+                made fresh for your cravings.
+            </p>
+<a class="cta-button" href="#product">
+                VIEW OUR PRODUCT
+            </a>
+</div>
+<div class="hero-image">
+<div class="image-placeholder">
+<img alt="Corn Delight Maja dessert" src="corn%20delight%20photo.webp"/>
+</div>
+</div>
+</section><section class="info-section" id="product">
+<h2>Our Product</h2>
+<p>
+            Enjoy creamy and sweet Filipino corn maja, prepared
+            to bring a delicious treat to your day.
+        </p>
+<div class="product-options product-options-large">
+    <article class="product-card product-card-large">
+        <img src="original-product.jpg" alt="Original Corn Delight Maja" loading="lazy">
+        <div class="product-card-info">
+            <h3>🌽 Original Corn Delight Maja</h3>
+            <p>Our classic Filipino corn maja, made with corn, coconut milk, and other simple ingredients. Perfect for snacks, celebrations, and sharing with family and friends.</p>
+            <div class="ingredients">
+                <h4>🥥 Ingredients</h4>
+                <ul><li>Cornstarch</li><li>White Sugar</li><li>Evaporada</li><li>Coco Mama</li><li>Can Sweet Corn</li><li>Cheese (sachet)</li></ul>
+            </div>
+            <p class="price">Price: ₱20</p>
+        </div>
+    </article>
+    <article class="product-card product-card-large">
+        <img src="innovative-product.jpg" alt="Innovative Ube Corn Delight Maja" loading="lazy">
+        <div class="product-card-info">
+            <h3>💜 Innovative Ube Corn Delight Maja</h3>
+            <p>Meet Corn Delight Maja Ube—a fun new twist on the classic original! Sweet ube condensed milk, juicy corn, and tasty grated cheese make a delicious sweet-and-savory treat.</p>
+            <div class="ingredients">
+                <h4>💜 Ingredients</h4>
+                <ul><li>Cornstarch</li><li>White Sugar</li><li>Ube Condense</li><li>Evaporada</li><li>Coco Mama</li><li>Can Sweet Corn</li><li>Cheese</li></ul>
+            </div>
+            <p class="price">Price: ₱30</p>
+        </div>
+    </article>
+</div>
+</section><section class="info-section" id="documentation">
+<h2>Product &amp; Customer Documentation</h2>
+<p>Explore photos from our product-making process and customer documentation.</p>
+<div class="documentation-gallery">
+    <article class="documentation-card preparation-card">
+        <h3>🌽 Product Preparation</h3>
+        <p>Preparing and making Corn Delight Maja.</p>
+        <div class="customer-carousel prep-carousel" aria-label="Product preparation photo slideshow">
+            <button class="carousel-arrow prev" type="button" aria-label="Previous preparation photo">‹</button>
+            <div class="customer-carousel-viewport">
+                <div class="customer-carousel-track">
+                    
+                    
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION1.jpg" alt="Product preparation photo 1" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION2.jpg" alt="Product preparation photo 2" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION3.jpg" alt="Product preparation photo 3" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION4.jpg" alt="Product preparation photo 4" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION5.jpg" alt="Product preparation photo 5" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION6.jpg" alt="Product preparation photo 6" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION7.jpg" alt="Product preparation photo 7" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION8.jpg" alt="Product preparation photo 8" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION9.jpg" alt="Product preparation photo 9" loading="lazy"><p></p></div>
+                    <div class="customer-slide optional-prep-slide"><img src="PREPARATION10.jpg" alt="Product preparation photo 10" loading="lazy"><p></p></div>
+                </div>
+            </div>
+            <button class="carousel-arrow next" type="button" aria-label="Next preparation photo">›</button>
+            <div class="carousel-dots" aria-label="Choose preparation photo"></div>
+        </div>
+    </article>
+    <article class="documentation-card customer-gallery-card">
+        <h3>📸 Customer's Photo Gallery</h3>
+        
+        <div class="customer-carousel" aria-label="Customer and business photo slideshow">
+            <button class="carousel-arrow prev" type="button" aria-label="Previous photo">‹</button>
+            <div class="customer-carousel-viewport">
+                <div class="customer-carousel-track">
+                    <div class="customer-slide"><img src="customer1.jpg" alt="customer  1" loading="lazy"><p>Thank you for choosing corn delight Ma'am Alexis!</p></div>
+                    <div class="customer-slide"><img src="customer2.jpg" alt="customer  2" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer3.jpg" alt="Customer  3" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer4.jpg" alt="Customer  4" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer5.jpg" alt="Customer  5" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer6.jpg" alt="customer  6" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer7.jpg" alt="customer  7" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer8.jpg" alt="Customer  8" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer9.jpg" alt="Customer  9" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer10.jpg" alt="Customer  10" loading="lazy"><p></p></div>
+                    <div class="customer-slide"><img src="customer11.jpg" alt="Customer  11" loading="lazy"><p></p></div>
+                </div>
+            </div>
+            <button class="carousel-arrow next" type="button" aria-label="Next photo">›</button>
+            <div class="carousel-dots" aria-label="Choose photo"></div>
+        </div>
+        <div class="customer-gallery-note">
+    <h3>Thank You for Your Support! 🌽💛</h3>
+
+    <p>
+        Your love and support inspire us to keep making every bite special.
+        We hope to serve you again soon!
+    </p>
+
+    <p class="thank-you-signature">
+        With love, Team Corn Delight Maja! 💛
+    </p>
+</div>
+    </article>
+</div>
+</section><section class="info-section" id="behind-scenes"><h2>Behind the Scenes</h2><div class="team-content"><p class="team-caption">
+                Watch a glimpse of our Corn Delight Maja journey and teamwork.
+            </p><video class="team-video" controls="" playsinline="" preload="metadata">
+<source src="corn-delight-video.mp4" type="video/mp4"/>
+                Your browser does not support the video tag.
+            </video></div></section><section class="info-section" id="team">
+<h2>Meet Our Team</h2>
+<p>
+            We are the team behind Corn Delight Maja, working together
+            to prepare and share our delicious homemade dessert.
+        </p>
+<div class="team-content">
+<img alt="Corn Delight Maja team presenting their dessert" class="team-photo" loading="lazy" src="group-photo.jpg"/>
+<p class="team-caption">
+                A little look at our team and the Corn Delight Maja we proudly present.
+            </p>
+
+
+
+</div>
+</section><section class="info-section" id="structure">
+    <h2>Our Management Team</h2>
+    <p>Meet the people responsible for leading, preparing, promoting, selling, and managing Corn Delight Maja.</p>
+
+    <div class="management-chart">
+        <div class="management-leader">
+            <span class="management-role">Chief Executive Officer (CEO)</span>
+            <img alt="Ato's photo" loading="lazy" src="ato.jpg"/>
+            <h3>Ato, Jayrome</h3>
+            <p>Leads and supervises the whole business</p>
+        </div>
+        <div class="management-connector" aria-hidden="true"></div>
+        <div class="management-departments">
+            <article class="management-department">
+                <h3>Website Manager</h3>
+                <div class="management-member"><img alt="Picardal's photo" loading="lazy" src="picardal.jpg"/><h4>Picardal, Fretchie Claire</h4><p>Website and online information</p></div>
+            </article>
+            <article class="management-department">
+                <h3>Social Media Page Manager</h3>
+                <div class="management-member"><img alt="Lucero's photo" loading="lazy" src="lucero.jpg"/><h4>Lucero, Zayin Jacob</h4><p>Facebook page and inquiries</p></div>
+            </article>
+            <article class="management-department">
+                <h3>Kitchen Team</h3>
+                <div class="management-member"><img alt="Valdez's photo" loading="lazy" src="valdez.jpg"/><h4>Valdez, Christina</h4><p>Kitchen Manager</p></div>
+                <div class="management-member"><img alt="Caadan's photo" loading="lazy" src="caadan.jpg"/><h4>Caadan, Shainna</h4><p>Assistant Kitchen Manager</p></div>
+            </article>
+            <article class="management-department">
+                <h3>Finance Team</h3>
+                <div class="management-member"><img alt="Lim's photo" loading="lazy" src="LIM.jpg"/><h4>Lim, Solran</h4><p>Finance Manager</p></div>
+                <div class="management-member"><img alt="Balagbis's photo" loading="lazy" src="JIM.jpg"/><h4>Balagbis, Jimrex</h4><p>Finance Manager</p></div>
+            </article>
+            <article class="management-department">
+                <h3>Sales Team</h3>
+                <div class="management-member"><img alt="Abenales's photo" loading="lazy" src="abenales.jpg"/><h4>Abenales, Allaiza Mae</h4><p>Sales Manager</p></div>
+                <div class="management-member"><img alt="Poti-an's photo" loading="lazy" src="poti-an.jpg"/><h4>Poti-an, Easter Rose</h4><p>Sales Manager</p></div>
+            </article>
+            <article class="management-department">
+                <h3>Packaging Team</h3>
+                <div class="management-member"><img alt="Sanita's photo" loading="lazy" src="sanita.jpg"/><h4>Sanita, Alea</h4><p>Packaging Staff</p></div>
+            </article>
+        </div>
+    </div>
+    <p class="structure-note">Each team works together to prepare quality products and provide good service to Corn Delight Maja customers.</p>
+</section><section class="info-section" id="financial"><h2>Financial Documentation</h2><p>Here are the recorded ingredient and packaging expenses for both product-making days.</p>
+<style>
+#financial .expense-block{margin:28px auto;padding:22px;max-width:1050px;background:#fffdf7;border:1px solid #ead8b5;border-radius:18px;box-shadow:0 8px 22px rgba(112,75,26,.08);text-align:left}
+#financial .expense-block h3{margin:0 0 8px;color:#76501b;font-size:22px}
+#financial .expense-formula{color:#8b6b36;font-weight:700;margin:0 0 16px}
+#financial .expense-table-wrap{width:100%;overflow-x:auto;border-radius:10px}
+#financial table{width:100%;border-collapse:collapse;min-width:560px;background:white}
+#financial th{background:linear-gradient(135deg,#f8e7b7,#f1d58a);color:#68491f;text-align:left;padding:12px}
+#financial td{padding:11px 12px;border-bottom:1px solid #f0e5ce;color:#57432c}
+#financial tbody tr:nth-child(even){background:#fffaf0}
+#financial .expense-total{margin:16px 0 0;text-align:right;font-size:19px;font-weight:800;color:#76501b}
+#financial .expense-note{font-size:13px;color:#766653;margin-top:10px}
+@media(max-width:600px){#financial .expense-block{padding:14px}}
+</style>
+<div class="expense-block"><h3>DAY 1 | Original Product</h3><div class="expense-table-wrap"><table><thead><tr><th>Item</th><th>Quantity</th><th>Cost</th><th>Total</th></tr></thead><tbody>
+<tr><td>Cornstarch</td><td>¼</td><td>₱23.00</td><td>₱23.00</td></tr><tr><td>White Sugar</td><td>¼</td><td>₱22.00</td><td>₱22.00</td></tr><tr><td>Evaporada</td><td>2</td><td>₱35.00</td><td>₱70.00</td></tr><tr><td>Coco Mama</td><td>2</td><td>₱34.00</td><td>₱68.00</td></tr><tr><td>Can Sweet Corn</td><td>1</td><td>₱41.00</td><td>₱41.00</td></tr><tr><td>Cheese (sachet)</td><td>2</td><td>₱16.00</td><td>₱32.00</td></tr><tr><td>Tapperware (packaging)</td><td>25</td><td>₱35.00</td><td>₱35.00</td></tr><tr><td>Spoon</td><td>52</td><td>₱25.00</td><td>₱25.00</td></tr><tr><td>Gloves</td><td>1</td><td>₱29.00</td><td>₱29.00</td></tr>
+</tbody></table></div><p class="expense-total">Total Expenses: ₱345.00</p></div>
+<div class="expense-block"><h3>DAY 2 | Innovative Product</h3><div class="expense-table-wrap"><table><thead><tr><th>Item</th><th>Quantity</th><th>Cost</th><th>Total</th></tr></thead><tbody>
+<tr><td>Cornstarch</td><td>¼</td><td>₱23.00</td><td>₱23.00</td></tr><tr><td>White Sugar</td><td>¼</td><td>₱22.00</td><td>₱22.00</td></tr><tr><td>Ube Condense</td><td>2</td><td>₱57.00</td><td>₱114.00</td></tr><tr><td>Evaporada</td><td>3</td><td>₱31.00</td><td>₱93.00</td></tr><tr><td>Coco Mama</td><td>3</td><td>₱34.00</td><td>₱102.00</td></tr><tr><td>Can Sweet Corn</td><td>1</td><td>₱41.00</td><td>₱41.00</td></tr><tr><td>Cheese</td><td>1</td><td>₱56.00</td><td>₱56.00</td></tr><tr><td>Tapperware (packaging)</td><td>3 packs (30 pcs)</td><td>₱41.00</td><td>₱123.00</td></tr><tr><td>Spoon</td><td>2 packs (50 pcs)</td><td>₱15.00</td><td>₱30.00</td></tr>
+</tbody></table></div><p class="expense-total">Total Expenses: ₱604.00</p></div>
+<style>
+#financial .sales-record-block{margin:28px auto;padding:22px;max-width:1050px;background:#fffdf7;border:1px solid #ead8b5;border-radius:18px;box-shadow:0 8px 22px rgba(112,75,26,.08);text-align:left}
+#financial .sales-record-block h3{margin:0 0 8px;color:#76501b;font-size:22px}
+#financial .sales-record-block p{color:#766653}
+#financial .sales-table-wrap{width:100%;overflow-x:auto;border-radius:10px;margin-top:14px}
+#financial .sales-table{width:100%;min-width:650px;border-collapse:collapse;background:#fff}
+#financial .sales-table th{background:linear-gradient(135deg,#f8e7b7,#f1d58a);color:#68491f;text-align:left;padding:12px}
+#financial .sales-table td{padding:11px 12px;border-bottom:1px solid #f0e5ce;color:#57432c}
+#financial .sales-table tbody tr:nth-child(even){background:#fffaf0}
+#financial .sales-note{font-size:13px;color:#766653;margin-top:12px}
+@media(max-width:600px){#financial .sales-record-block{padding:14px}}
+</style>
+<div class="sales-record-block"><h3> Sales Record</h3><div class="sales-table-wrap"><table class="sales-table"><thead><tr><th>Day</th><th>Product</th><th>Quantity Sold</th><th>Selling Price per Piece</th><th>Total Sales</th><th>Profit per Piece</th><th>Total Profit</th></tr></thead><tbody><tr><td>1</td><td>Maja Original Product</td><td>25 pcs</td><td>₱20.00</td><td>₱500.00</td><td>₱7.00</td><td>₱175.00</td></tr><tr><td>2</td><td>Maja Ube</td><td>26 pcs</td><td>₱30.00</td><td>₱780.00</td><td>₱6.00</td><td>₱156.00</td></tr><tr class="sales-total-row"><td colspan="4"><strong>Total</strong></td><td><strong>₱1,280.00</strong></td><td>—</td><td><strong>₱331.00</strong></td></tr></tbody></table></div><div class="expense-block"><h3>Financial Summary</h3><p>Total capital contributed: <strong>₱1,000.00</strong> (10 members × ₱100 each).</p><p>Total expenses: <strong>₱949.00</strong> (Day 1 ₱345.00 + Day 2 ₱604.00).</p><p>Total sales: <strong>₱1,280.00</strong>.</p><p>Calculated profit: <strong>₱331.00</strong> (₱1,280.00 − ₱949.00).</p><p>Profit share per member: <strong>₱33.10</strong> (₱331.00 ÷ 10). Capital returned per member: <strong>₱100.00</strong>. Total capital plus profit per member: <strong>₱133.10</strong>.</p></div></div></section><section class="info-section" id="permits"><h2>Business Permits &amp; Registration</h2><p>These images are for school purposes only and are not proof of actual government registration or authorization.</p><p class="permit-hint">Each document is shown large and separately. Click a document image to open it at full size for easier reading.</p><style>
+/* Permit and DTI cards sized to match the other documentation cards. */
+#permits .permit-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px;width:100%;max-width:1200px;margin:28px auto;padding:0 10px;box-sizing:border-box;align-items:stretch}
+#permits .permit-document{min-width:0;background:rgba(255,255,255,.97);border:1px solid #ead8b5;border-radius:20px;padding:22px;box-shadow:0 10px 28px rgba(90,65,0,.11);overflow:hidden}
+#permits .permit-document h3{color:#76501b;margin:0 0 14px;font-size:22px}
+#permits .permit-document img{display:block;width:100%;height:300px;max-width:100%;object-fit:contain;object-position:center;background:#fffdf6;border-radius:12px;border:1px solid #eee2cb;cursor:zoom-in}
+#permits .permit-document p{margin:12px 0 0;color:#766653;font-size:14px}
+#permits .permit-hint{font-size:14px;color:#766653;text-align:center;margin:8px 0 0}
+@media(max-width:768px){#permits .permit-gallery{grid-template-columns:1fr}#permits .permit-document{padding:18px}#permits .permit-document img{height:260px}}
+</style><div class="permit-gallery"><article class="permit-document"><h3>Mayor’s / Business Permit</h3><img src="BUSINESS PERMIT.png" alt="Mayor’s or Business Permit" onclick="window.open(this.src, '_blank')"><p>school purposes only — not an official permit.</p></article><article class="permit-document"><h3>DTI Business Name Registration</h3><img src="DTI REGISTRATION.png" alt="DTI Business Name Registration" onclick="window.open(this.src, '_blank')"><p>school purposes only — not an official registration.</p></article></div>
+<h2>About Corn Delight Maja</h2>
+<p>
+            Corn Delight Maja is a small food business that offers
+            a delicious Filipino corn dessert. Our goal is to
+            provide a sweet, creamy, and satisfying treat that
+            customers can enjoy and share with others.
+        </p>
+</section><section class="info-section" id="contact">
+<h2>Contact Us</h2>
+<p>
+            Want to order Corn Delight Maja or ask about our product?
+            Contact us for orders and inquiries.
+        </p>
+<p>
+            Facebook:
+            <a href="https://www.facebook.com/share/1EuG76VkFm/" rel="noopener noreferrer" target="_blank">
+                Visit our Facebook page
+            </a>
+</p>
+<p>Phone Number: 14-243-243</p>
+</section><section class="info-section" id="order"><h2>Order Now</h2><p>Ready to try Corn Delight Maja? Contact us through our Facebook page to ask about availability and place an order.</p><a class="cta-button" href="https://www.facebook.com/share/1EuG76VkFm/" rel="noopener noreferrer" target="_blank">ORDER THROUGH FACEBOOK</a></section><footer>
+<p>
+            © 2026 <span>Corn Delight Maja</span>.
+            Isang Kagat, Sarap Agad!
+        </p>
+</footer>
+
+<script>
+(function () {
+    document.querySelectorAll('.customer-carousel').forEach((carousel) => {
+        const track = carousel.querySelector('.customer-carousel-track');
+        const dotsWrap = carousel.querySelector('.carousel-dots');
+        const prev = carousel.querySelector('.carousel-arrow.prev');
+        const next = carousel.querySelector('.carousel-arrow.next');
+        let index = 0;
+
+        function currentSlides() {
+            return Array.from(track.querySelectorAll('.customer-slide'));
+        }
+        function refresh() {
+            const slides = currentSlides();
+            if (!slides.length) return;
+            index = Math.max(0, Math.min(index, slides.length - 1));
+            track.style.transform = `translateX(-${index * 100}%)`;
+            dotsWrap.innerHTML = '';
+            slides.forEach((slide, i) => {
+                const dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'carousel-dot' + (i === index ? ' active' : '');
+                dot.setAttribute('aria-label', `Show photo ${i + 1}`);
+                dot.addEventListener('click', () => { index = i; refresh(); });
+                dotsWrap.appendChild(dot);
+            });
+            prev.disabled = slides.length < 2;
+            next.disabled = slides.length < 2;
+        }
+
+        // Hide optional photos when the matching image file is not in the website folder.
+        track.querySelectorAll('img').forEach((img) => {
+            img.addEventListener('error', () => {
+                const slide = img.closest('.customer-slide');
+                if (slide && (slide.classList.contains('optional-prep-slide') ||
+                    /^customer-\d+\.jpg$/i.test(img.getAttribute('src') || ''))) {
+                    slide.remove();
+                    refresh();
+                }
+            });
+        });
+        prev.addEventListener('click', () => {
+            const n = currentSlides().length;
+            if (n > 1) { index = (index - 1 + n) % n; refresh(); }
+        });
+        next.addEventListener('click', () => {
+            const n = currentSlides().length;
+            if (n > 1) { index = (index + 1) % n; refresh(); }
+        });
+        refresh();
+    });
+})();
+</script>
+
+</body>
+</html>
