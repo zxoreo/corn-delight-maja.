@@ -18,7 +18,7 @@
             scroll-padding-top: 20px;
         }
 
-        /* WARM CORN-THEMED BACKGROUND */
+        
         body {
             background-color: #fffdf6;
             /* Keep the background photo visible behind the whole page. */
@@ -967,7 +967,7 @@
     <div class="management-chart">
         <div class="management-leader">
             <span class="management-role">Chief Executive Officer (CEO)</span>
-            <img alt="Ato's photo" loading="lazy" src="ato.jpg"/>
+            <img alt="Ato's photo" loading="lazy" src="ato.jpg" data-photo-base="ato">
             <h3>Ato, Jayrome</h3>
             <p>Leads and supervises the whole business</p>
         </div>
@@ -975,30 +975,30 @@
         <div class="management-departments">
             <article class="management-department">
                 <h3>Website Manager</h3>
-                <div class="management-member"><img alt="Picardal's photo" loading="lazy" src="picardal.jpg"/><h4>Picardal, Fretchie Claire</h4><p>Website and online information</p></div>
+                <div class="management-member"><img alt="Picardal's photo" loading="lazy" src="picardal.jpg" data-photo-base="picardal"><h4>Picardal, Fretchie Claire</h4><p>Website and online information</p></div>
             </article>
             <article class="management-department">
                 <h3>Social Media Page Manager</h3>
-                <div class="management-member"><img alt="Lucero's photo" loading="lazy" src="lucero.jpg"/><h4>Lucero, Zayin Jacob</h4><p>Facebook page and inquiries</p></div>
+                <div class="management-member"><img alt="Lucero's photo" loading="lazy" src="lucero.jpg" data-photo-base="lucero"><h4>Lucero, Zayin Jacob</h4><p>Facebook page and inquiries</p></div>
             </article>
             <article class="management-department">
                 <h3>Kitchen Team</h3>
-                <div class="management-member"><img alt="Valdez's photo" loading="lazy" src="valdez.jpg"/><h4>Valdez, Christina</h4><p>Kitchen Manager</p></div>
-                <div class="management-member"><img alt="Caadan's photo" loading="lazy" src="caadan.jpg"/><h4>Caadan, Shainna</h4><p>Assistant Kitchen Manager</p></div>
+                <div class="management-member"><img alt="Valdez's photo" loading="lazy" src="valdez.jpg" data-photo-base="valdez"><h4>Valdez, Christina</h4><p>Kitchen Manager</p></div>
+                <div class="management-member"><img alt="Caadan's photo" loading="lazy" src="caadan.jpg" data-photo-base="caadan"><h4>Caadan, Shainna</h4><p>Assistant Kitchen Manager</p></div>
             </article>
             <article class="management-department">
                 <h3>Finance Team</h3>
-                <div class="management-member"><img alt="Lim's photo" loading="lazy" src="LIM.jpg"/><h4>Lim, Solran</h4><p>Finance Manager</p></div>
-                <div class="management-member"><img alt="Balagbis's photo" loading="lazy" src="JIM.jpg"/><h4>Balagbis, Jimrex</h4><p>Finance Manager</p></div>
+                <div class="management-member"><img alt="Lim's photo" loading="lazy" src="LIM.jpg" data-photo-base="LIM"><h4>Lim, Solran</h4><p>Finance Manager</p></div>
+                <div class="management-member"><img alt="Balagbis's photo" loading="lazy" src="JIM.jpg" data-photo-base="JIM"><h4>Balagbis, Jimrex</h4><p>Finance Manager</p></div>
             </article>
             <article class="management-department">
                 <h3>Sales Team</h3>
-                <div class="management-member"><img alt="Abenales's photo" loading="lazy" src="abenales.jpg"/><h4>Abenales, Allaiza Mae</h4><p>Sales Manager</p></div>
-                <div class="management-member"><img alt="Poti-an's photo" loading="lazy" src="poti-an.jpg"/><h4>Poti-an, Easter Rose</h4><p>Sales Manager</p></div>
+                <div class="management-member"><img alt="Abenales's photo" loading="lazy" src="abenales.jpg" data-photo-base="abenales"><h4>Abenales, Allaiza Mae</h4><p>Sales Manager</p></div>
+                <div class="management-member"><img alt="Poti-an's photo" loading="lazy" src="poti-an.jpg" data-photo-base="poti-an"><h4>Poti-an, Easter Rose</h4><p>Sales Manager</p></div>
             </article>
             <article class="management-department">
                 <h3>Packaging Team</h3>
-                <div class="management-member"><img alt="Sanita's photo" loading="lazy" src="sanita.jpg"/><h4>Sanita, Alea</h4><p>Packaging Staff</p></div>
+                <div class="management-member"><img alt="Sanita's photo" loading="lazy" src="sanita.jpg" data-photo-base="sanita"><h4>Sanita, Alea</h4><p>Packaging Staff</p></div>
             </article>
         </div>
     </div>
@@ -1122,6 +1122,38 @@
             if (n > 1) { index = (index + 1) % n; refresh(); }
         });
         refresh();
+    });
+})();
+</script>
+
+
+<script>
+/* GitHub Pages filenames are case-sensitive. Try common filename capitalization
+   and image-extension variants for management portraits if the first path fails. */
+(function () {
+    const extensions = [".jpg", ".jpeg", ".png", ".webp", ".JPG", ".JPEG", ".PNG", ".WEBP"];
+    document.querySelectorAll("#structure img[data-photo-base]").forEach((img) => {
+        const base = img.dataset.photoBase;
+        const variants = [...new Set([
+            base,
+            base.toLowerCase(),
+            base.toUpperCase(),
+            base.charAt(0).toUpperCase() + base.slice(1).toLowerCase()
+        ])];
+        const candidates = variants.flatMap(name => extensions.map(ext => name + ext));
+        let candidateIndex = 0;
+
+        img.addEventListener("error", function tryNextFilename() {
+            if (candidateIndex >= candidates.length) {
+                img.removeEventListener("error", tryNextFilename);
+                img.alt = img.alt + " (photo file not found)";
+                img.style.visibility = "hidden";
+                return;
+            }
+            const nextPath = candidates[candidateIndex++];
+            if (img.getAttribute("src") !== nextPath) img.src = nextPath;
+            else tryNextFilename();
+        });
     });
 })();
 </script>
