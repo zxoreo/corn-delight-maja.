@@ -1,0 +1,170 @@
+/* ==========================================
+   1. GLOBAL STYLES (Resets & Fonts)
+   ========================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #fffdf6;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 253, 246, 0.25),
+            rgba(255, 253, 246, 0.25)
+        ),
+        url("background.png");
+
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+    color: #333;
+    line-height: 1.6;
+}
+
+}
+
+/* ==========================================
+   2. NAVIGATION BAR
+   ========================================== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background-color: #1a1a1a; /* Sleek dark header background */
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00; /* Warm yellow theme color */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none; /* Removes standard link underline */
+    margin-left: 25px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #ffcc00; /* Changes color to yellow on mouse hover */
+}
+
+/* ==========================================
+   3. HERO INTRO SECTION (Side-by-Side Layout)
+   ========================================== */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 75vh;
+    gap: 50px;
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text .tagline {
+    font-size: 18px;
+    color: #e67e22; /* Warm orange tint */
+    font-style: italic;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-text h1 {
+    font-size: 54px;
+    color: #2c3e50;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    font-weight: 800;
+}
+
+.hero-text .description {
+    font-size: 18px;
+    margin-bottom: 35px;
+    color: #666666;
+}
+
+/* ==========================================
+   4. THE CLICKABLE CALL-TO-ACTION BUTTON
+   ========================================== */
+.cta-button {
+    display: inline-block;
+    padding: 14px 35px;
+    background-color: #ffcc00; /* Bright theme button yellow */
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 30px; /* Gives the pill-shaped round edges */
+    box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+    transition: all 0.2s ease;
+    position: relative;
+    z-index: 10; /* Ensures it sits on top and is clickable */
+}
+
+.cta-button:hover {
+    background-color: #e6b800;
+    transform: translateY(-3px); /* Subtle upward floating effect */
+    box-shadow: 0 6px 20px rgba(255, 204, 0, 0.6);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* ==========================================
+   5. HERO IMAGE / PLACEHOLDER
+   ========================================== */
+.hero-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* This styles a temporary clean yellow box until you put a real photo link */
+.image-placeholder {
+    width: 100%;
+    max-width: 450px;
+    height: 350px;
+    background-color: #ffeaa7; /* Soft yellow block */
+    border: 3px dashed #ffcc00;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #d39e00;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Responsive design for tablets and mobile devices */
+@media (max-width: 768px) {
+    .navbar { padding: 20px; flex-direction: column; gap: 15px; }
+    .hero { flex-direction: column; padding: 40px 20px; text-align: center; }
+    .hero-text h1 { font-size: 38px; }
+    .image-placeholder { height: 250px; }
+}
